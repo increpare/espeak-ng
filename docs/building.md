@@ -211,6 +211,7 @@ to build:
 | `--with-extdict-ru`  | Russian             | no      |
 | `--with-extdict-cmn` | Mandarin Chinese    | no      |
 | `--with-extdict-yue` | Cantonese           | no      |
+| `--with-extdict-ltc` | Midlde Chinese      | no      |
 
 The extended dictionaries are taken from
 [http://espeak.sourceforge.net/data/](http://espeak.sourceforge.net/data/) and

@@ -1613,6 +1613,7 @@ Translator *SelectTranslator(const char *name)
 		break;
 	case L3('c', 'm', 'n'): // no break, just go to 'zh' case
 	case L3('y', 'u', 'e'):
+	case L3('l', 't', 'c'):
 	case L('z','h'):	// zh is used for backwards compatibility. Prefer cmn or yue.
 	{
 		static const short stress_lengths_zh[8] = { 230, 150, 230, 230, 230, 0, 240, 250 }; // 1=tone5. end-of-sentence, 6=tone 1&4, 7=tone 2&3
@@ -1631,10 +1632,13 @@ Translator *SelectTranslator(const char *name)
 		tr->langopts.word_gap = 0x21; // length of a final vowel is less dependent on the next consonant, don't merge consonant with next word
 		tr->langopts.textmode = true;
 		tr->langopts.listx = 1; // compile *_listx after *_list
-		if (name2 == L3('y', 'u', 'e')) {
+		if (name2 == L3('y', 'u', 'e') || name2 == L3('l', 't', 'c')) {
 			tr->langopts.numbers = NUM_DEFAULT;
 			tr->langopts.numbers2 = NUM2_ZERO_TENS;
 			tr->langopts.break_numbers = BREAK_INDIVIDUAL;
+		}
+		if (name2 == L3('l', 't', 'c')) {			
+			tr->langopts.param[LOPT_UNPRONOUNCABLE] = 1; // disable check for unpronouncable words
 		}
 	}
 		break;

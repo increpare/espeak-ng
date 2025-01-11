@@ -19,6 +19,8 @@
 
 #include "config.h"
 
+#include <execinfo.h>
+
 #include <ctype.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -2081,11 +2083,35 @@ static void MatchRule(Translator *tr, char *word[], char *word_start, int group_
 	memcpy(match_out, &best, sizeof(MatchRecord));
 }
 
+/* Obtain a backtrace and print it to stdout. */
+void print_trace (void)
+{
+  void *array[10];
+  char **strings;
+  int size, i;
+
+  size = backtrace (array, 10);
+  strings = backtrace_symbols (array, size);
+  if (strings != NULL)
+  {
+
+    printf ("Obtained %d stack frames.\n", size);
+    for (i = 0; i < size; i++)
+      printf ("%s\n", strings[i]);
+  }
+
+  free (strings);
+}
+
 int TranslateRules(Translator *tr, char *p_start, char *phonemes, int ph_size, char *end_phonemes, int word_flags, unsigned int *dict_flags)
 {
 	/* Translate a word bounded by space characters
 	   Append the result to 'phonemes' and any standard prefix/suffix in 'end_phonemes' */
-
+	fprintf(f_trans,"TranslateRules %s\n",p_start);
+	print_trace();
+	//print stacktrace
+	
+	
 	unsigned char c, c2;
 	unsigned int c12;
 	int wc = 0;
@@ -2125,8 +2151,9 @@ int TranslateRules(Translator *tr, char *p_start, char *phonemes, int ph_size, c
 		char wordbuf[120];
 		unsigned int ix;
 
-		for (ix = 0; ((c = p_start[ix]) != ' ') && (c != 0) && (ix < (sizeof(wordbuf)-1)); ix++)
+		for (ix = 0; ((c = p_start[ix]) != ' ') && (c != 0) && (ix < (sizeof(wordbuf)-1)); ix++) {
 			wordbuf[ix] = c;
+		}
 		wordbuf[ix] = 0;
 		if (word_flags & FLAG_UNPRON_TEST)
 			fprintf(f_trans, "Unpronouncable? '%s'\n", wordbuf);

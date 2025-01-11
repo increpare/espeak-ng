@@ -1825,6 +1825,9 @@ include ph_vietnam
 phonemetable yue base1
 include ph_yue
 
+phonemetable ltc base1
+include ph_ltc
+
 // *** Tables extending base2 ***
 
 phonemetable be base2

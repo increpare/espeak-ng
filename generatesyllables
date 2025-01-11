@@ -1,0 +1,6 @@
+# bash script
+# for each line of syllables.txt, run ./es -v ltc-Latn-baxtersagart -X -s 70 "<syl>" -w syllables/<syl> on it
+
+for syl in $(cat syllables.txt); do
+    ./es -v ltc-Latn-baxtersagart -X -s 70 "$syl" -w "syllables/$syl.wav"
+done

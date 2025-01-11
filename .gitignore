@@ -208,6 +208,7 @@ dictsource/dict_phonemes
 dictsource/ru_listx
 dictsource/cmn_listx
 dictsource/yue_listx
+dictsource/ltc_listx
 
 phsource/compile_prog_log
 phsource/compile_report
@@ -230,3 +231,5 @@ espeak-ng-data/mbrola_ph/*_phtrans
 
 # fastlane metadata
 !fastlane/metadata/android/*/*.txt
+
+syllables/*

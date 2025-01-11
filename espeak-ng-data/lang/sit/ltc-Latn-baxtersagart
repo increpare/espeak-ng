@@ -1,0 +1,13 @@
+name Chinese (Middle Chinese, latin as Baxter Sagart)
+language ltc
+language zh-ltc
+language zh 8
+
+phonemes ltc
+dictionary ltc
+
+// interpret English letters as 1=English words, 2=baxtersagart
+dictrules 2
+
+words 1
+dict_min 10000

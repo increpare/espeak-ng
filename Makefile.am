@@ -26,7 +26,7 @@ AM_CXXFLAGS += -fprofile-instr-generate -fcoverage-mapping
 endif
 
 EXTRA_DIST=
-CLEANFILES = dictsource/ru_listx dictsource/cmn_listx dictsource/yue_listx
+CLEANFILES = dictsource/ru_listx dictsource/cmn_listx dictsource/yue_listx dictsource/ltc_listx
 
 bin_PROGRAMS =
 lib_LTLIBRARIES =
@@ -560,7 +560,8 @@ dictionaries: \
 	espeak-ng-data/uz_dict \
 	espeak-ng-data/vi_dict \
 	espeak-ng-data/xex_dict \
-	espeak-ng-data/yue_dict
+	espeak-ng-data/yue_dict \
+	espeak-ng-data/ltc_dict
 
 DICTSOURCE = \
 	$(wildcard dictsource/*_emoji) \
@@ -950,6 +951,10 @@ yue: espeak-ng-data/yue_dict
 dictsource/yue_listx:
 	ln -svf extra/yue_listx dictsource/
 
+ltc: espeak-ng-data/ltc_dict
+dictsource/ltc_listx:
+	ln -svf extra/ltc_listx dictsource/
+
 # NOTE: keep in sync with espeak-ng-data/%_dict more generic rule.
 if HAVE_YUE_EXTENDED_DICTIONARY
 espeak-ng-data/yue_dict: src/espeak-ng phsource/phonemes.stamp dictsource/yue_list dictsource/yue_rules dictsource/yue_extra dictsource/yue_listx dictsource/yue_emoji
@@ -966,6 +971,25 @@ dictsource/yue_emoji:
 		touch $@ ; \
 	else \
 		tools/emoji dictsource/en_emoji yue ${CLDR_PATH} > $@ ; \
+	fi
+
+
+# NOTE: keep in sync with espeak-ng-data/%_dict more generic rule.
+if HAVE_LTC_EXTENDED_DICTIONARY
+espeak-ng-data/ltc_dict: src/espeak-ng phsource/phonemes.stamp dictsource/ltc_list dictsource/ltc_rules dictsource/ltc_extra dictsource/ltc_listx dictsource/ltc_emoji
+else
+espeak-ng-data/ltc_dict: src/espeak-ng phsource/phonemes.stamp dictsource/ltc_list dictsource/ltc_rules dictsource/ltc_extra dictsource/ltc_emoji
+endif
+	@echo "  DICT      $@"
+	rm -f $@
+	cd dictsource && ESPEAK_DATA_PATH=$(CURDIR) LD_LIBRARY_PATH=../src:${LD_LIBRARY_PATH} ../src/espeak-ng --compile=ltc && cd ..
+
+dictsource/ltc_emoji:
+	@echo "  EMOJI     $@"
+	@if test x"${CLDR_PATH}" = x ; then \
+		touch $@ ; \
+	else \
+		tools/emoji dictsource/en_emoji ltc ${CLDR_PATH} > $@ ; \
 	fi
 
 ##### mbrola:

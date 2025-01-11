@@ -60,6 +60,10 @@ AC_ARG_WITH([extdict-yue],
     [AS_HELP_STRING([--with-extdict-yue], [use the extended Cantonese Chinese Dictionary file @<:@default=yes@:>@])],
     [])
 
+AC_ARG_WITH([extdict-ltc],
+    [AS_HELP_STRING([--with-extdict-ltc], [use the extended Middle Chinese Dictionary file @<:@default=yes@:>@])],
+    [])
+
 AC_ARG_WITH([libfuzzer],
     [AS_HELP_STRING([--with-libfuzzer], [enable libFuzzer in the fuzzer tests @<:@default=no@:>@])],
     [])
@@ -326,9 +330,16 @@ else
 	have_extdict_yue=yes
 fi
 
+if test "$with_extdict_ltc" = "no" ; then
+	have_extdict_ltc=no
+else
+	have_extdict_ltc=yes
+fi
+
 AM_CONDITIONAL(HAVE_RU_EXTENDED_DICTIONARY,  [test x"$have_extdict_ru"  = xyes])
 AM_CONDITIONAL(HAVE_CMN_EXTENDED_DICTIONARY,  [test x"$have_extdict_cmn"  = xyes])
 AM_CONDITIONAL(HAVE_YUE_EXTENDED_DICTIONARY, [test x"$have_extdict_yue" = xyes])
+AM_CONDITIONAL(HAVE_LTC_EXTENDED_DICTIONARY, [test x"$have_extdict_ltc" = xyes])
 
 dnl ================================================================
 dnl Compiler warnings.
@@ -415,4 +426,5 @@ AC_MSG_NOTICE([
             Russian:                   ${have_extdict_ru}
             Chinese (Mandarin):        ${have_extdict_cmn}
             Chinese (Cantonese):       ${have_extdict_yue}
+            Chinese (Middle Chinese):  ${have_extdict_ltc}
 ])

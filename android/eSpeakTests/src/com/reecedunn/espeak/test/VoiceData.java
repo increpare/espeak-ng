@@ -171,5 +171,6 @@ public class VoiceData
         new Voice("vi-vn-x-south",   "aav/vi-VN-x-south",   "vi",  "vie", "VN",  "VNM", "south",    SpeechSynthesis.GENDER_MALE, "Vietnamese",                       "vie-VNM-south",    "Đây là mẫu văn bản được đọc bằng Tiếng Việt (Việt Nam,SOUTH)"),
         new Voice("cmn",             "sit/cmn",             "zh",  "zho", "",    "",    "",         SpeechSynthesis.GENDER_MALE, "Chinese (Mandarin)",               "zho",              "This is a sample of text spoken in 中文"),
         new Voice("yue",             "sit/yue",             "zh",  "zho", "HK",  "HKG", "",         SpeechSynthesis.GENDER_MALE, "Chinese (Cantonese)",              "zho-HKG",          "This is a sample of text spoken in 中文 (中華人民共和國香港特別行政區)", "This is a sample of text spoken in 中文 (香港)"),
+        new Voice("ltc",             "sit/ltc",             "zh",  "zho", "MC",  "MCN", "",         SpeechSynthesis.GENDER_MALE, "Chinese (Middle Chinese)",         "zho-MC",           "This is a sample of text spoken in 中文 (中華人民共和國香港特別行政區)", "This is a sample of text spoken in 中文 (香港)"),
     };
 }

@@ -28,6 +28,7 @@ To check, what languages are supported by distributed version, run `espeak-ng --
 | `roa`       | `ca`              | Romance               | Catalan                     |                        |
 | `iro`       | `chr`             | Iroquoian             | Cherokee <sup>\[1,6\]</sup> | Western/C.E.D.         |
 | `sit`       | `yue`             | Sino-Tibetan          | Chinese                     | Cantonese              |
+| `sit`       | `ltc`             | Sino-Tibetan          | Chinese                     | Middle Chinese         |
 | `sit`       | `hak`             | Sino-Tibetan          | Chinese                     | Hakka                  |
 | `map`       | `haw`             | Austronesian          | Hawaiian                    |                        |
 | `sit`       | `cmn`             | Sino-Tibetan          | Chinese                     | Mandarin               |

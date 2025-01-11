@@ -1,0 +1,13 @@
+name Chinese (Middle Chinese)
+language ltc
+language zh-ltc
+language zh 8
+
+phonemes ltc
+dictionary ltc
+
+// interpret English letters as 1=English words, 2=baxtersagart
+dictrules 1
+
+words 1
+dict_min 10000

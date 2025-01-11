@@ -454,5 +454,6 @@ public class SpeechSynthesis {
         mLocaleFixes.put("es-419", new Locale("es", "MX"));
         mLocaleFixes.put("hy-arevmda", new Locale("hy", "AM", "arevmda")); // hy-arevmda crashes on Android 5.0
         mLocaleFixes.put("yue", new Locale("zh", "HK"));
+        mLocaleFixes.put("ltc", new Locale("zh", "MC"));
     }
 }

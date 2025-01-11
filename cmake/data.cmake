@@ -22,6 +22,7 @@ list(APPEND _dict_compile_list
   ug uk ur uz
   vi
   yue
+  ltc
 )
 
 list(APPEND _mbrola_lang_list
